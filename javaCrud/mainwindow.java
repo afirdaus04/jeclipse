@@ -1,6 +1,7 @@
 package javaCrud;
 
 import java.awt.EventQueue;
+import java.sql.*;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -48,6 +49,31 @@ public class mainwindow {
 	public mainwindow() {
 		initialize();
 	}
+	
+	Connection con;
+	PreparedStatement pst;
+		
+	public void Connect ()
+		{
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+				con = DriverManager.getConnection("jdbc:mysql://localhost/javacrud", "root","");
+			}
+						
+			catch (ClassNotFoundException ex)
+			{
+	
+			}
+			catch (SQLException ex)
+			{
+			
+			}		
+		}
+	
+	
+	
+	
+	
 
 	/**
 	 * Initialize the contents of the frame.
@@ -65,7 +91,7 @@ public class mainwindow {
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Registration", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel.setBounds(60, 113, 308, 147);
+		panel.setBounds(45, 80, 308, 147);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -100,19 +126,19 @@ public class mainwindow {
 		panel.add(textField_2);
 		
 		JButton btnNewButton = new JButton("Save");
-		btnNewButton.setBounds(60, 265, 87, 48);
+		btnNewButton.setBounds(45, 232, 87, 48);
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnExit = new JButton("Exit");
-		btnExit.setBounds(171, 265, 87, 48);
+		btnExit.setBounds(156, 232, 87, 48);
 		frame.getContentPane().add(btnExit);
 		
 		JButton btnClear = new JButton("Clear");
-		btnClear.setBounds(281, 265, 87, 48);
+		btnClear.setBounds(266, 232, 87, 48);
 		frame.getContentPane().add(btnClear);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(396, 113, 310, 200);
+		scrollPane.setBounds(381, 80, 310, 200);
 		frame.getContentPane().add(scrollPane);
 		
 		table = new JTable();
@@ -120,7 +146,7 @@ public class mainwindow {
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new TitledBorder(null, "Search", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_1.setBounds(60, 324, 308, 76);
+		panel_1.setBounds(45, 291, 308, 76);
 		frame.getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -135,11 +161,11 @@ public class mainwindow {
 		panel_1.add(lblNewLabel_1_1_2);
 		
 		JButton btnUpdate = new JButton("Update");
-		btnUpdate.setBounds(396, 340, 87, 48);
+		btnUpdate.setBounds(381, 307, 87, 48);
 		frame.getContentPane().add(btnUpdate);
 		
 		JButton btnDelete = new JButton("Delete");
-		btnDelete.setBounds(493, 340, 87, 48);
+		btnDelete.setBounds(478, 307, 87, 48);
 		frame.getContentPane().add(btnDelete);
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
